@@ -8,9 +8,9 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 | Aritmetično zaporedje|
 |------------------------------------------|
-| 📚 OPIS   Aritmetično zaporedje vzame dva parametra, začetni člen in korak in prvotni člen spremeni za korak (več ali manj).|
-| ⚙️ PARAMETRI   1 |
-| 🚀 ZAPOREDJA   0  |
+| 📚 **Opis**:   Aritmetično zaporedje vzame dva parametra, začetni člen in korak in prvotni člen spremeni za korak (več ali manj).|
+| ⚙️ **Parametri**:   1 |
+| 🚀 **Zaporedja**:   0  |
 
 
 
