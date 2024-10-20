@@ -8,11 +8,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Aritmetično zaporedje
 
-📚 **Opis**: `arithmetic`, ki računa aritmetično zaporedje z danim začetnim členom in korakom.  
-
-⚙️ **Parametri**:   2  
-
-🚀 **Zaporedja**:   0  
+📚 **Opis**: `arithmetic`, ki računa aritmetično zaporedje z danim začetnim členom in korakom.<br>⚙️ **Parametri**:   2 <br>🚀 **Zaporedja**:   0  
 
 
 
