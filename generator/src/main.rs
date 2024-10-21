@@ -13,70 +13,11 @@ use tokio::net::TcpListener;
 use serde::{Deserialize, Serialize};
 
 const PORT: u16 = 12345;
+//spremeni v prebrano iz command lina, podobno za ip
 
 pub mod expression;
 pub mod sequence;
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Project {
-    pub name: String,
-    pub ip: String,
-    pub port: u16,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Range {
-    pub from: u64,
-    pub to: u64,
-    pub step: u64,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SequenceSyntax {
-    pub name: String,
-    pub parameters: Vec<f64>,
-    pub sequences: Vec<Box<SequenceSyntax>>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SequenceRequest {
-    pub range: Range,
-    pub parameters: Vec<f64>,
-    pub sequences: Vec<Box<SequenceSyntax>>,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct SequenceInfo {
-    name: String,
-    description: String,
-    parameters: u32,
-    sequences: u32,
-}
-
-pub struct Arithmetic {
-    start: f64,
-    step: f64,
-}
-
-impl Arithmetic {
-    pub fn new(start: f64, step: f64) -> Box<Arithmetic> {
-        Box::new(Arithmetic { start, step })
-    }
-
-    pub fn k_th(&self, k: usize) -> f64 {
-        self.start + (k as f64) * self.step
-    }
-
-    pub fn range(&self, range: Range) -> Vec<f64> {
-        let mut result = Vec::new();
-        let mut k = range.from;
-        while k <= range.to {
-            result.push(self.k_th(k as usize));
-            k += range.step;
-        }
-        result
-    }
-}
+pub mod structs;
 
 fn sequences() -> Vec<SequenceInfo> {
     let mut sequences = Vec::new();
@@ -97,7 +38,7 @@ fn sequences() -> Vec<SequenceInfo> {
 
 fn get_project() -> Project {
     return Project {
-        name: "Matija & Filip".to_string(),
+        name: "Eva & Leila".to_string(),
         ip: "0.0.0.0".to_string(),
         port: PORT,
     };
