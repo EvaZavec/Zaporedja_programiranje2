@@ -41,9 +41,9 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 📚 **Opis**: `partial_product`, ki ustvari novo zaporedje sestavljeno iz delnih produktov prvotnega zaporedja. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   1
  
 
-  ### Zaporedje delnih produktov
+  ### Zaporedje križnih produktov
  
- 📚 **Opis**: `cross_product`, ki križno množi člene zaporedji s sledečo rekurzijo: $a_n \cdot b_{n1} + a_{n1} \cdot b_n$. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   2
+ 📚 **Opis**: `cross_product`, ki križno množi člene zaporedji s sledečo rekurzijo:  $a_n \cdot b_{n-1} + a_{n-1} \cdot b_n$ . <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   2
 
 
 
