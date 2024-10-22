@@ -1,21 +1,22 @@
 use super::models::Sequence;
 use crate::structs::range::Range;
 
-pub struct Sum {
-    first: dyn Sequence<f64>,
-    second: dyn Sequence<f64>
+pub struct Geometric {
+    pub start: f64,
+    pub ratio: f64,
 }
 
-impl Sum {
-    pub fn new(first: dyn Sequence<f64>, second: dyn Sequence<f64>) -> Box<Sum> {
-        Box::new(Sum { first, second })
+impl Geometric {
+    pub fn new(start: f64, step: f64) -> Box<Geometric> {
+        Box::new(Geometric { start, ratio })
     }
+
     pub fn k_th(&self, k: usize) -> f64 {
-       self.first::k_th(k) + self.second::k_th(k)
+        self.start * pow(self.ratio, k as f64)
     }
 }
 
-impl Sequence<f64> for Sum {
+impl Sequence<f64> for Geometric {
     fn range(&self, range: &Range) -> Vec<f64> {
         let mut result = Vec::new();
         let mut k = range.from;
