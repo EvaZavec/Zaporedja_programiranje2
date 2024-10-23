@@ -33,9 +33,9 @@ pub fn sequences() -> Vec<SequenceInfo> {
         sequences: 1,
     });
     sequences.push(SequenceInfo {
-        name: "Fibonacci".to_string(),
+        name: "Eval".to_string(),
         description: "".to_string(),
-        parameters: 3,
+        parameters: 0,
         sequences: 0,
     });
     sequences.push(SequenceInfo {
