@@ -27,13 +27,7 @@ pub fn sequences() -> Vec<SequenceInfo> {
         sequences: 1,
     });
     sequences.push(SequenceInfo {
-        name: "Eval".to_string(),
-        description: "".to_string(),
-        parameters: 0,
-        sequences: 0,
-    });
-    sequences.push(SequenceInfo {
-        name: "Geometris".to_string(),
+        name: "Geometric".to_string(),
         description: "".to_string(),
         parameters: 2,
         sequences: 0,
