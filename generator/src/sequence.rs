@@ -3,7 +3,6 @@ pub mod constant;
 pub mod cross_product;
 pub mod chaos;
 pub mod drop;
-pub mod eval;
 pub mod fibonacci;
 pub mod geometric;
 pub mod models;

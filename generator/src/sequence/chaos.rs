@@ -14,7 +14,7 @@ impl Chaos {
     pub fn k_th(&self, k: usize) -> f64 {
         if k = 0 {self.start}
         else {
-            let last = self.k_th(-1);
+            let last = self.k_th(k-1);
             self.chaos_parameter * last * (1 - last)
         }
     }
