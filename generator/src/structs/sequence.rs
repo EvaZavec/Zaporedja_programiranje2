@@ -17,8 +17,8 @@ pub struct SequenceRequest {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SequenceInfo {
-    name: String,
-    description: String,
-    parameters: u32,
-    sequences: u32,
+    pub name: String,
+    pub description: String,
+    pub parameters: u32,
+    pub sequences: u32,
 }

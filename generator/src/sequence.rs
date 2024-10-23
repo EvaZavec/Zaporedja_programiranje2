@@ -1,6 +1,7 @@
 pub mod arithmetic;
 pub mod constant;
 pub mod cross_product;
+pub mod drop;
 pub mod eval;
 pub mod geometric;
 pub mod models;

@@ -18,23 +18,7 @@ const PORT: u16 = 12345;
 pub mod expression;
 pub mod sequence;
 pub mod structs;
-
-fn sequences() -> Vec<SequenceInfo> {
-    let mut sequences = Vec::new();
-    sequences.push(SequenceInfo {
-        name: "Arithmetic".to_string(),
-        description: "Arithmetic sequence".to_string(),
-        parameters: 2,
-        sequences: 0,
-    });
-    sequences.push(SequenceInfo {
-        name: "Lin Comb".to_string(),
-        description: "".to_string(),
-        parameters: 3,
-        sequences: 2,
-    });
-    sequences
-}
+pub mod info;
 
 fn get_project() -> Project {
     return Project {
