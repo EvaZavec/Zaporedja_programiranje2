@@ -1,42 +1,32 @@
-use crate::sequence::Sequence;
+use super::models::Sequence;
+use crate::structs::range::Range;
 
 pub struct PartialProduct {
-    sequence: Box<dyn Sequence<i64>>,
+    pub seq: Box<dyn Sequence<i64>>,
 }
 
 impl PartialProduct {
-    pub fn new(sequence: Box<dyn Sequence<i64>>) -> Box<PartialProduct> {
-        Box::new(PartialProduct { sequence })
+    pub fn new(seq: Box<dyn Sequence<i64>>) -> Box<PartialProduct> {
+        Box::new(PartialProduct { seq })
+    }
+    fn k_th(&self, k: usize) -> f64 {
+        let mut product = 1.0;
+        for i in 0..=k {
+            let p = self.seq.k_th(i as i64).unwrap_or(1);
+            product *= p;
+        }
+        product
     }
 }
 
 impl Sequence<i64> for PartialProduct {
-    fn name(&self) -> String {
-        format!("Partial Product of {}", self.sequence.name())
-    }
-
-    fn contains(&self, item: i64) -> bool {
-        let mut product = 1;
-        let mut i = 0;
-        while let Some(term) = self.sequence.k_th(i) {
-            product *= term;
-            if product == item {
-                return true;
-            }
-            i += 1;
+    fn range(&self, range: &Range) -> Vec<f64> {
+        let mut result = Vec::new();
+        let mut k = range.from;
+        while k < range.to {
+            result.push(self.k_th(k as usize));
+            k += range.step;
         }
-        false
-    }
-
-    fn k_th(&self, k: i64) -> Option<i64> {
-        let mut product = 1;
-        for i in 0..=k {
-            product *= self.sequence.k_th(i)?;
-        }
-        Some(product)
-    }
-
-    fn start(&self) -> Option<i64> {
-        self.sequence.start()
+        result
     }
 }
