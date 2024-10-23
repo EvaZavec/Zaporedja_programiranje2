@@ -2,16 +2,16 @@ use super::models::Sequence;
 use crate::structs::range::Range;
 
 pub struct Sum {
-    first: dyn Sequence<f64>,
-    second: dyn Sequence<f64>
+    seq1: dyn Sequence<f64>,
+    seq2: dyn Sequence<f64>
 }
 
 impl Sum {
-    pub fn new(first: dyn Sequence<f64>, second: dyn Sequence<f64>) -> Box<Sum> {
-        Box::new(Sum { first, second })
+    pub fn new(seq1: dyn Sequence<f64>, seq2: dyn Sequence<f64>) -> Box<Sum> {
+        Box::new(Sum { seq1, seq2 })
     }
     pub fn k_th(&self, k: usize) -> f64 {
-       self.first::k_th(k) + self.second::k_th(k)
+       self.seq1.k_th(k) + self.seq2.k_th(k)
     }
 }
 

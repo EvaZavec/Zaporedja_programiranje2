@@ -1,4 +1,5 @@
-use crate::sequence::Sequence;
+use super::models::Sequence;
+use crate::structs::range::Range;
 
 pub struct CrossProduct<S1, S2> {
     sequence1: S1,

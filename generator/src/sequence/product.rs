@@ -2,16 +2,16 @@ use super::models::Sequence;
 use crate::structs::range::Range;
 
 pub struct Product {
-    first: dyn Sequence<f64>,
-    second: dyn Sequence<f64>
+    seq1: dyn Sequence<f64>,
+    seq2: dyn Sequence<f64>
 }
 
 impl Product {
-    pub fn new(first: dyn Sequence<f64>, second: dyn Sequence<f64>) -> Box<Product> {
-        Box::new(Product { first, second })
+    pub fn new(seq1: dyn Sequence<f64>, seq2: dyn Sequence<f64>) -> Box<Product> {
+        Box::new(Product { seq1, seq2 })
     }
     pub fn k_th(&self, k: usize) -> f64 {
-       self.first::k_th(k) * self.second::k_th(k)
+       self.seq1.k_th(k) * self.seq2.k_th(k)
     }
 }
 

@@ -7,12 +7,12 @@ pub struct Geometric {
 }
 
 impl Geometric {
-    pub fn new(start: f64, step: f64) -> Box<Geometric> {
+    pub fn new(start: f64, ratio: f64) -> Box<Geometric> {
         Box::new(Geometric { start, ratio })
     }
 
     pub fn k_th(&self, k: usize) -> f64 {
-        self.start * pow(self.ratio, k as f64)
+        self.start * self.ratio.powf(k as f64)
     }
 }
 
