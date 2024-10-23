@@ -1,22 +1,24 @@
 use super::models::Sequence;
 use crate::structs::range::Range;
 
-pub struct Drop {
+pub struct Quadratic {
+    pub a : f64,
+    pub b : f64,
+    pub c : f64,
     pub seq: Box<dyn Sequence<i64>>,
-    pub delay: f64
 }
 
-impl Drop {
-    pub fn new(seq: Box<dyn Sequence<i64>>, delay: f64) -> Box<Drop> {
-        Box::new(Drop { seq, delay })
+impl Quadratic {
+    pub fn new(a : f64, b : f64, c : f64, seq: Box<dyn Sequence<i64>>,) -> Box<Quadratic> {
+        Box::new(Quadratic { a, b, c, seq })
     }
-
     pub fn k_th(&self, k: usize) -> f64 {
-        self.seq.k_th(k + self.delay)
+        let xn = self.seq.k_th(k);
+        self.a * xn.powf(k as f64) + self.b * xn + self.c
     }
 }
 
-impl Sequence<f64> for Drop {
+impl Sequence<f64> for Quadratic {
     fn range(&self, range: &Range) -> Vec<f64> {
         let mut result = Vec::new();
         let mut k = range.from;

@@ -2,13 +2,13 @@ use super::models::Sequence;
 use crate::structs::range::Range;
 use rand::Rng;
 
-pub struct Random<S1, S2> {
-    pub seq1: S1,
-    pub seq2: S2,
+pub struct Random {
+    pub seq1: Box<dyn Sequence<i64>>,
+    pub seq2: Box<dyn Sequence<i64>>,
 }
 
-impl<S1, S2> Random<S1, S2> {
-    pub fn new(seq1: S1, seq2: S2) -> Box<Self> {
+impl Random {
+    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<Random> {
         Box::new(Random { seq1, seq2 })
     }
 
@@ -22,7 +22,7 @@ impl<S1, S2> Random<S1, S2> {
     }
 }
 
-impl<S1, S2> Sequence<f64> for Random<S1, S2> {
+impl Sequence<f64> for Random {
     fn range(&self, range: &Range) -> Vec<f64> {
         let mut result = Vec::new();
         let mut k = range.from;

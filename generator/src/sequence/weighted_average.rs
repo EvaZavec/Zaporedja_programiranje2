@@ -2,13 +2,13 @@ use super::models::Sequence;
 use crate::structs::range::Range;
 
 pub struct WeightedAverage {
-    seq1: dyn Sequence<f64>,
-    seq2: dyn Sequence<f64>,
-    weight_seq: dyn Sequence<f64>
+    seq1: Box<dyn Sequence<i64>>,
+    seq2: Box<dyn Sequence<i64>>,
+    weight_seq: Box<dyn Sequence<i64>>
 }
 
 impl WeightedAverage {
-    pub fn new(seq1: dyn Sequence<f64>, seq2: dyn Sequence<f64>, weight_seq: dyn Sequence) -> Box<WeightedAverage> {
+    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>, weight_seq: Box<dyn Sequence<i64>>) -> Box<WeightedAverage> {
         Box::new(WeightedAverage { seq1, seq2, weight_seq })
     }
     pub fn k_th(&self, k: usize) -> f64 {

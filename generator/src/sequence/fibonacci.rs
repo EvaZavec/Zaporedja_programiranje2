@@ -2,13 +2,13 @@ use super::models::Sequence;
 use crate::structs::range::Range;
 
 pub struct Fibonacci {
-    seq1: dyn Sequence<f64>,
-    seq2: dyn Sequence<f64>,
-    fib: dyn Sequence<f64>
+    pub seq1: Box<dyn Sequence<i64>>,
+    pub seq2: Box<dyn Sequence<i64>>,
+    pub fib: Box<dyn Sequence<i64>>
 }
 
 impl Fibonacci {
-    pub fn new(seq1: dyn Sequence<f64>, seq2: dyn Sequence<f64>, fib: dyn Sequence) -> Box<Fibonacci> {
+    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>, fib: Box<dyn Sequence<i64>>) -> Box<Fibonacci> {
         Box::new(Fibonacci { seq1, seq2, fib })
     }
     pub fn k_th(&self, k: usize) -> f64 {

@@ -2,7 +2,7 @@ use super::models::Sequence;
 use crate::structs::range::Range;
 
 pub struct Constant {
-    constant: f64
+    pub constant: f64
 }
 
 impl Constant {
