@@ -12,7 +12,7 @@ impl PartialProduct {
     fn k_th(&self, k: usize) -> f64 {
         let mut product = 1.0;
         for i in 0..=k {
-            let p = self.seq.k_th(i as i64).unwrap_or(1);
+            let p = self.seq.k_th(i as i64);
             product *= p;
         }
         product
