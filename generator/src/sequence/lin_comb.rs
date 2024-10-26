@@ -5,18 +5,19 @@ pub struct LinearCombination {
     seq1: Box<dyn Sequence<f64>>,
     seq2: Box<dyn Sequence<f64>>,
     x: f64,
-    y: f64
+    y: f64,
+    z: f64
 }
 
 impl LinearCombination {
     pub fn new(seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>, x: f64, y: f64, z: f64) -> Box<LinearCombination> {
-        Box::new(LinearCombination { seq1, seq2, x, y })
+        Box::new(LinearCombination { seq1, seq2, x, y, z })
     }
 
     pub fn k_th(&self, k: usize) -> f64 {
         let a_k = self.seq1.k_th(k); 
         let b_k = self.seq2.k_th(k); 
-        self.x * a_k + self.y * b_k
+        self.x * a_k + self.y * b_k + self.z
     }
 }
 
