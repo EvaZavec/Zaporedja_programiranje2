@@ -13,3 +13,5 @@ pub mod random;
 pub mod sum;
 pub mod switch;
 pub mod weighted_average;
+pub mod maximum;
+pub mod lin_comb;

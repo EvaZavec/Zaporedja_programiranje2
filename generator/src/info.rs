@@ -33,6 +33,12 @@ pub fn sequences() -> Vec<SequenceInfo> {
         sequences: 1,
     });
     sequences.push(SequenceInfo {
+        name: "Fibonacci".to_string(),
+        description: "".to_string(),
+        parameters: 0,
+        sequences: 3,
+    });
+    sequences.push(SequenceInfo {
         name: "Geometric".to_string(),
         description: "".to_string(),
         parameters: 2,
@@ -84,6 +90,12 @@ pub fn sequences() -> Vec<SequenceInfo> {
         name: "Lin Comb".to_string(),
         description: "".to_string(),
         parameters: 3,
+        sequences: 2,
+    });
+    sequences.push(SequenceInfo {
+        name: "Maximum".to_string(),
+        description: "".to_string(),
+        parameters: 0,
         sequences: 2,
     });
 
