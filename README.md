@@ -68,7 +68,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Zaporedje maksimumov
 
-📚 **Opis**: `maximum`, ki vrne maksimum danih zaporedij oz. $ \max(a_n, b_n) $. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   2
+📚 **Opis**: `maximum`, ki računa zaporedje maksimumov danih zaporedij. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   2
 
 
 
