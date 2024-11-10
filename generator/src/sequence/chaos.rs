@@ -10,17 +10,6 @@ impl Chaos {
     pub fn new(start: f64, chaos_parameter: f64) -> Box<Chaos> {
         Box::new(Chaos { start, chaos_parameter })
     }
-<<<<<<< HEAD
-=======
-
-    pub fn k_th(&self, k: usize) -> f64 {
-        let mut result = self.start;
-        for _ in 0..k {
-            result = self.chaos_parameter * result * (1.0 - result);
-        }
-        result
-    }
->>>>>>> 23d48fb5df05f7c1b9aeb651bcc640af8523f1d8
 }
 
 impl Sequence<f64> for Chaos {
