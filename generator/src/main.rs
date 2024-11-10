@@ -14,12 +14,12 @@ use tokio::net::TcpListener;
 
 const PORT: u16 = 12345;
 //spremeni v prebrano iz command lina, podobno za ip
-
+use crate::sequence::Sequence;
 use crate::structs::project::Project;
 use crate::info::sequences;
 use crate::structs::sequence::SequenceRequest;
 use crate::sequence::arithmetic::Arithmetic;
-use crate::sequence::models::Sequence;
+
 
 //pub mod expression;
 pub mod sequence;
@@ -114,7 +114,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     (&Method::POST, r) => {
                         let seqs = sequences();
                         let sequences = seqs
-                            //.iter();
+                            .iter()
                             .find(|&x| ("/sequence/".to_string() + &x.name) == r);
                         match sequences {
                             None => create_404(),
@@ -125,7 +125,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                                 let seq =
                                     Arithmetic::new(request.parameters[0], request.parameters[1]);
                                 Ok(Response::new(full(
-                                    serde_json::to_string(&seq.range(&range)).unwrap(), // dodala referenco na range, ce bo kaj narobe glej to
+                                    serde_json::to_string(&seq.range(range)).unwrap(), // dodala referenco na range, ce bo kaj narobe glej to
                                 )))
                             }
                             _ => panic!("Not implemented"),

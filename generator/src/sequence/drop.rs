@@ -1,4 +1,4 @@
-use super::models::Sequence;
+use crate::sequence::Sequence;
 use crate::structs::range::Range;
 
 pub struct Drop {
@@ -10,14 +10,13 @@ impl Drop {
     pub fn new(seq: Box<dyn Sequence<i64>>, delay: f64) -> Box<Drop> {
         Box::new(Drop { seq, delay })
     }
-
-    pub fn k_th(&self, k: usize) -> f64 {
-        self.seq.k_th(k + self.delay)
-    }
 }
 
 impl Sequence<f64> for Drop {
-    fn range(&self, range: &Range) -> Vec<f64> {
+    fn k_th(&self, k: usize) -> f64 {
+        self.seq.k_th((k as f64 + self.delay) as usize)
+    }
+    fn range(&self, range: Range) -> Vec<f64> {
         let mut result = Vec::new();
         let mut k = range.from;
         while k < range.to {

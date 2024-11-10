@@ -1,4 +1,4 @@
-use super::models::Sequence;
+use crate::sequence::Sequence;
 use crate::structs::range::Range;
 
 pub struct Constant {
@@ -12,9 +12,12 @@ impl Constant {
 }
 
 impl Sequence<f64> for Constant {
-    fn range(&self, range: &Range) -> Vec<f64> {
+    fn k_th(&self, k: usize) -> f64 {
+        self.constant
+    }
+    fn range(&self, range: Range) -> Vec<f64> {
         let n = (range.to - range.from) / range.step;
-        let result = vec![self.constant; n];
+        let result = vec![self.constant; n as usize];
         result
     }
 }

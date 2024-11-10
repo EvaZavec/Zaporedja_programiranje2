@@ -15,3 +15,10 @@ pub mod switch;
 pub mod weighted_average;
 pub mod maximum;
 pub mod lin_comb;
+use crate::structs::range::Range;
+
+pub trait Sequence<I64> {
+    fn k_th(&self, k: usize) -> f64;
+
+    fn range(&self, range: Range) -> Vec<f64>;
+}

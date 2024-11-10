@@ -1,4 +1,4 @@
-use super::models::Sequence;
+use crate::sequence::Sequence;
 use crate::structs::range::Range;
 use rand::Rng;
 
@@ -14,8 +14,10 @@ impl Switch {
     pub fn new(limit_up : f64, limit_down : f64, switch_index : f64, seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<Switch> {
         Box::new(Switch { limit_up, limit_down, switch_index, seq1, seq2 })
     }
+}
 
-    pub fn k_th(&self, k: usize) -> f64 {
+impl Sequence<f64> for Switch {
+    fn k_th(&self, k: usize) -> f64 {
         let an = self.seq1.k_th(k);
         let bn = self.seq2.k_th(k);
         let mut rng = rand::thread_rng();
@@ -23,10 +25,7 @@ impl Switch {
         if r < self.switch_index {an}
         else {bn}
     }
-}
-
-impl Sequence<f64> for Switch {
-    fn range(&self, range: &Range) -> Vec<f64> {
+    fn range(&self, range: Range) -> Vec<f64> {
         let mut result = Vec::new();
         let mut k = range.from;
         while k < range.to {
