@@ -10,12 +10,18 @@ use hyper::{body::Body, Method, Request, Response, StatusCode};
 use hyper_util::rt::TokioIo;
 use tokio::net::TcpListener;
 
-use serde::{Deserialize, Serialize};
+//use serde::{Deserialize, Serialize};
 
 const PORT: u16 = 12345;
 //spremeni v prebrano iz command lina, podobno za ip
 
-pub mod expression;
+use crate::structs::project::Project;
+use crate::info::sequences;
+use crate::structs::sequence::SequenceRequest;
+use crate::sequence::arithmetic::Arithmetic;
+use crate::sequence::models::Sequence;
+
+//pub mod expression;
 pub mod sequence;
 pub mod structs;
 pub mod info;
@@ -108,7 +114,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     (&Method::POST, r) => {
                         let seqs = sequences();
                         let sequences = seqs
-                            // .iter()
+                            //.iter();
                             .find(|&x| ("/sequence/".to_string() + &x.name) == r);
                         match sequences {
                             None => create_404(),
@@ -119,7 +125,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                                 let seq =
                                     Arithmetic::new(request.parameters[0], request.parameters[1]);
                                 Ok(Response::new(full(
-                                    serde_json::to_string(&seq.range(range)).unwrap(),
+                                    serde_json::to_string(&seq.range(&range)).unwrap(), // dodala referenco na range, ce bo kaj narobe glej to
                                 )))
                             }
                             _ => panic!("Not implemented"),
