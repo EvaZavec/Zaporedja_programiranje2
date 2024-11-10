@@ -10,29 +10,27 @@ use hyper::{body::Body, Method, Request, Response, StatusCode};
 use hyper_util::rt::TokioIo;
 use tokio::net::TcpListener;
 
-//use serde::{Deserialize, Serialize};
-
 const PORT: u16 = 12345;
 //spremeni v prebrano iz command lina, podobno za ip
+<<<<<<< HEAD
 use crate::sequence::Sequence;
 use crate::structs::project::Project;
 use crate::info::sequences;
 use crate::structs::sequence::SequenceRequest;
 use crate::sequence::arithmetic::Arithmetic;
 
+=======
 
-//pub mod expression;
+use crate::info::sequences;
+use crate::structs::sequence::SequenceRequest;
+use crate::functions::send_get_post::{send_get, send_post};
+use crate::functions::project_handler::get_project;
+>>>>>>> 23d48fb5df05f7c1b9aeb651bcc640af8523f1d8
+
+pub mod functions;
+pub mod info;
 pub mod sequence;
 pub mod structs;
-pub mod info;
-
-fn get_project() -> Project {
-    return Project {
-        name: "Eva & Leila".to_string(),
-        ip: "0.0.0.0".to_string(),
-        port: PORT,
-    };
-}
 
 fn full<T: Into<Bytes>>(chunk: T) -> BoxBody<Bytes, hyper::Error> {
     Full::new(chunk.into())
@@ -54,18 +52,6 @@ fn empty() -> BoxBody<Bytes, hyper::Error> {
     Empty::<Bytes>::new()
         .map_err(|never| match never {})
         .boxed()
-}
-
-async fn send_post(url: String, body: String) -> Result<String, reqwest::Error> {
-    let client = reqwest::Client::new();
-    let res = client.post(url).body(body).send().await?.text().await?;
-    return Ok(res);
-}
-
-async fn send_get(url: String) -> Result<String, reqwest::Error> {
-    let client = reqwest::Client::new();
-    let res = client.get(url).send().await?.text().await?;
-    return Ok(res);
 }
 
 #[tokio::main]
