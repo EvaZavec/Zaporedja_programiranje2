@@ -12,7 +12,7 @@ impl Drop {
     }
 
     pub fn k_th(&self, k: usize) -> f64 {
-        self.seq.k_th(k + self.delay)
+        self.seq.k_th(k as f64 + self.delay)
     }
 }
 

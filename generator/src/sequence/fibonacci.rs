@@ -12,8 +12,11 @@ impl Fibonacci {
         Box::new(Fibonacci { seq1, seq2, fib })
     }
     pub fn k_th(&self, k: usize) -> f64 {
+        if k == 0 {
+            return self.seq1.k_th(k) as f64;
+        }
         let ak = self.seq1.k_th(k);
-        let bk = self.seq1.k_th(k);
+        let bk = self.seq2.k_th(k);
         self.fib.k_th(k) * ak + self.fib.k_th(k-1) * bk       
     }
 }

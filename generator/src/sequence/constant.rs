@@ -14,7 +14,7 @@ impl Constant {
 impl Sequence<f64> for Constant {
     fn range(&self, range: &Range) -> Vec<f64> {
         let n = (range.to - range.from) / range.step;
-        let result = vec![self.constant; n];
+        let result = vec![self.constant; n as usize];
         result
     }
 }

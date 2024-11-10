@@ -8,15 +8,15 @@ pub struct Chaos {
 
 impl Chaos {
     pub fn new(start: f64, chaos_parameter: f64) -> Box<Chaos> {
-        Box::new(Chaos {start, chaos_parameter })
+        Box::new(Chaos { start, chaos_parameter })
     }
 
     pub fn k_th(&self, k: usize) -> f64 {
-        if k = 0 {self.start}
-        else {
-            let last = self.k_th(k-1);
-            self.chaos_parameter * last * (1 - last)
+        let mut result = self.start;
+        for _ in 0..k {
+            result = self.chaos_parameter * result * (1.0 - result);
         }
+        result
     }
 }
 
