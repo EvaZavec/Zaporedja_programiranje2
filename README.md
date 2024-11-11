@@ -6,69 +6,89 @@ TODO
 ## Razpoložljiva zaporedja
 Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter zaporedij potrebnih za njihovo tvorbo:
 
-### Aritmetično zaporedje
+### Arithmetic sequence
 
-📚 **Opis**: `arithmetic`, ki računa aritmetično zaporedje z danim začetnim členom in korakom.<br>⚙️ **Parametri**:   2 <br>🚀 **Zaporedja**:   0  
+📚 **Description**: `arithmetic`, sequence with two parameters: the starting element and the step.<br>⚙️ **Parameters**:   2 <br>🚀 **Sequences**:   0  
 
 
+### Chaos
 
- ### Konstantno zaporedje
+📚 **Description**: `chaos` sequence takes two parameters, the starting element and the parameter of chaos, and returns the next element according to the formula: $ c_{k} = r c_{k-1} (1 - c_{k-1}$. <br>⚙️ **Parameters**:   2  <br>🚀 **Sequences**:   0
 
-📚 **Opis**: `constant`, ki vrne konstantno zaporedje z vsemi členi enakimi dani konstanti. <br>⚙️ **Parametri**:   1  <br>🚀 **Zaporedja**:   0   
+
+ ### Constant sequence
+
+📚 **Description**: `constant` sequence of a given parameter: $c$. <br>⚙️ **Parameters**:   1  <br>🚀 **Sequences**:   0   
 
 
  
-### Geometrijsko zaporedje
+### Geometric sequence
 
-📚 **Opis**: `geometric`, ki računa geometrijsko zaporedje z danim začetnim členom in kvocientom. <br>⚙️ **Parametri**:   2  <br>🚀 **Zaporedja**:   0 
+📚 **Description**: `geometric` sequence with two parameters: the starting element and the ratio. <br>⚙️ **Parameters**:   2  <br>🚀 **Sequences**:   0 
 
 
 
-### Zaporedje vsot
+### Sum
 
-📚 **Opis**: `sum`, ki po členih sešteva dani dve zaporedji. <br>⚙️ **Parametri**:   0 <br>🚀 **Zaporedja**:   2   
+📚 **Description**: `sum` sequence takes two sequences and returns their sum. <br>⚙️ **Parameters**:   0 <br>🚀 **Sequences**:   2   
  
 
 
- ### Zaporedje produktov
+ ### Product
 
-📚 **Opis**: `product`, ki po členih množi dani dve zaporedji. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   2 
-
- 
-
- ### Zaporedje delnih produktov
- 
-📚 **Opis**: `partial_product`, ki ustvari novo zaporedje sestavljeno iz delnih produktov prvotnega zaporedja. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   1
- 
-
-### Zaporedje križnih produktov
- 
- 📚 **Opis**: `cross_product`, ki križno množi člene zaporedji s sledečo rekurzijo:  $a_n \cdot b_{n-1} + a_{n-1} \cdot b_n$ . <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   2
-
-
-### Zaporedje drop
- 
- 📚 **Opis**: `drop`, ki iz danega zaporedja izpusti dano število začetnih členov. <br>⚙️ **Parametri**:   1  <br>🚀 **Zaporedja**:   1
+📚 **Description**: `product` sequence takes two sequences and returns their product. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   2 
 
  
-### Zaporedje chaos
+
+ ### Partial product
  
- 📚 **Opis**: `chaos`,  <br>⚙️ **Parametri**:     <br>🚀 **Zaporedja**: 
-
-
-### Fibonaccijevo zaporedje
+📚 **Description**: `partial_product` sequence returns products of all previous element of the given sequence. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   1
  
- 📚 **Opis**: `fibonacci`, ki vzame tri zaporedja $(a_n), (b_n)$ in $(f_n)$, ter računa izračuna novo zaporedje po rekurziji $f_n \cdot a_n + f_{n-1} \cdot b_n$. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   3
 
-
-### Linearna kombinacija
+### Cross product
  
- 📚 **Opis**: `lin_comb`, ki iz danih zaporedij $(x_n), (y_n)$ in parametrov $a, b, c$ ustvari linearno kombinacijo: $a \cdot x_k + b \cdot y_k + c$ . <br>⚙️ **Parametri**:   3  <br>🚀 **Zaporedja**:   2
+ 📚 **Description**: `cross_product` sequence takes two sequences $a_n$ and $b_n$ and returns the next element as the cross product:  $a_n \cdot b_{n-1} + a_{n-1} \cdot b_n$ . <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   2
 
 
-### Zaporedje maksimumov
+### Drop
+ 
+ 📚 **Description**: `drop` sequence is the given sequence shifted by the parameter delay. <br>⚙️ **Parameters**:   1  <br>🚀 **Sequences**:   1
 
-📚 **Opis**: `maximum`, ki računa zaporedje maksimumov danih zaporedij. <br>⚙️ **Parametri**:   0  <br>🚀 **Zaporedja**:   2
+
+### Fibonacci sequence
+ 
+ 📚 **Description**: `fibonacci` sequence takes two sequences and as the next element returns the sum of previous two elements, each multiplied by a coresponding element from one of the sequences. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   2
+
+
+### Linear combination
+ 
+ 📚 **Description**: `lin_comb` calculated by the formula: $a \cdot a_k + b \cdot b_k + c$ . <br>⚙️ **Parameters**:   3  <br>🚀 **Sequences**:   2
+
+
+### Maximum
+
+📚 **Description**: `maximum` sequence takes two sequences and returns their maximum. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   2
+
+### Quadratic
+
+📚 **Description**: `quadratic` sequence is calculated according to the quadratic function: $ax^{2} + bx + c $, where a, b, c are parameters and x is the k-th element of the given sequence. <br>⚙️ **Parameters**:   3  <br>🚀 **Sequences**:   1
+
+
+
+### Random
+
+📚 **Description**: `random` sequence returns a random number between k-th elements of both sequences. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   2
+
+
+
+### Switch
+
+📚 **Description**: `switch` sequence takes three parameters, the lower and upper limit and the switch. If the random number between limits is lower than the switch, it returns the k-th element of the first sequence and if it is higher the k-th element of the second sequence.. <br>⚙️ **Parameters**:   3  <br>🚀 **Sequences**:   2
+
+
+### Weighted average
+
+📚 **Description**: `weighted_average` is calculated by formula: $w_{k} a_{k} + (1-wk) b_{k}$, where $w_k$ is the weighted sequence and $a_k, b_k$ are two other sequences. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   3
 
 
 
