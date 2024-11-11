@@ -13,7 +13,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Chaos
 
-📚 **Description**: `chaos` sequence takes two parameters, the starting element and the parameter of chaos, and returns the next element according to the formula: $ c_{k} = r c_{k-1} (1 - c_{k-1}$. <br>⚙️ **Parameters**:   2  <br>🚀 **Sequences**:   0
+📚 **Description**: `chaos` sequence takes two parameters, the starting element and the parameter of chaos, and returns the next element according to the formula: $ c_{k} = r \cdot c_{k-1} \cdot (1 - c_{k-1})$. <br>⚙️ **Parameters**:   2  <br>🚀 **Sequences**:   0
 
 
  ### Constant sequence
@@ -71,7 +71,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Quadratic
 
-📚 **Description**: `quadratic` sequence is calculated according to the quadratic function: $ax^{2} + bx + c $, where a, b, c are parameters and x is the k-th element of the given sequence. <br>⚙️ **Parameters**:   3  <br>🚀 **Sequences**:   1
+📚 **Description**: `quadratic` sequence is calculated according to the quadratic function: $a \cdot x^{2} + bx + c $, where a, b, c are parameters and x is the k-th element of the given sequence. <br>⚙️ **Parameters**:   3  <br>🚀 **Sequences**:   1
 
 
 
