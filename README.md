@@ -47,7 +47,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Cross product
  
- 📚 **Description**: `cross_product` sequence takes two sequences $a_n$ and $b_n$ and returns the next element as the cross product:  $a_n \cdot b_{n-1} + a_{n-1} \cdot b_n$ . <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   2
+ 📚 **Description**: `cross_product` sequence takes two sequences $a_n$ and $b_n$ and returns the next element as the cross product:  $a_n  b_{n-1} + a_{n-1}  b_n$ . <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   2
 
 
 ### Drop
@@ -71,7 +71,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Quadratic
 
-📚 **Description**: `quadratic` sequence is calculated according to the quadratic function: $a \cdot x^{2} + bx + c $, where a, b, c are parameters and x is the k-th element of the given sequence. <br>⚙️ **Parameters**:   3  <br>🚀 **Sequences**:   1
+📚 **Description**: `quadratic` sequence is calculated according to the quadratic function: $a x^{2} + bx + c $, where a, b, c are parameters and x is the k-th element of the given sequence. <br>⚙️ **Parameters**:   3  <br>🚀 **Sequences**:   1
 
 
 
