@@ -1,5 +1,4 @@
 use crate::sequence::Sequence;
-use crate::structs::range::Range;
 use rand::Rng;
 
 pub struct Switch {
@@ -24,14 +23,5 @@ impl Sequence<f64> for Switch {
         let r = rng.gen_range(self.limit_down..self.limit_down);
         if r < self.switch_index {an}
         else {bn}
-    }
-    fn range(&self, range: Range) -> Vec<f64> {
-        let mut result = Vec::new();
-        let mut k = range.from;
-        while k < range.to {
-            result.push(self.k_th(k as usize));
-            k += range.step;
-        }
-        result
     }
 }

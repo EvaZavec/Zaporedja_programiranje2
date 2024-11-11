@@ -1,5 +1,4 @@
 use crate::sequence::Sequence;
-use crate::structs::range::Range;
 
 pub struct Chaos {
     pub start: f64,
@@ -19,14 +18,5 @@ impl Sequence<f64> for Chaos {
             let last = self.k_th(k-1);
             self.chaos_parameter * last * (1.0 - last)
         }
-    }
-    fn range(&self, range: Range) -> Vec<f64> {
-        let mut result = Vec::new();
-        let mut k = range.from;
-        while k < range.to {
-            result.push(self.k_th(k as usize));
-            k += range.step;
-        }
-        result
     }
 }

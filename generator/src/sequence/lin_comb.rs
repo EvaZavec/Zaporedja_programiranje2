@@ -1,5 +1,4 @@
 use crate::sequence::Sequence;
-use crate::structs::range::Range;
 
 pub struct LinearCombination {
     a: f64,
@@ -16,20 +15,9 @@ impl LinearCombination {
 }
 
 impl Sequence<f64> for LinearCombination {
-
     fn k_th(&self, k: usize) -> f64 {
         let a_k = self.seq1.k_th(k); 
         let b_k = self.seq2.k_th(k); 
         self.a * a_k + self.b * b_k + self.c
-    }
-
-    fn range(&self, range: Range) -> Vec<f64> {
-        let mut result = Vec::new();
-        let mut k = range.from;
-        while k < range.to {
-            result.push(self.k_th(k as usize));
-            k += range.step;
-        }
-        result
     }
 }

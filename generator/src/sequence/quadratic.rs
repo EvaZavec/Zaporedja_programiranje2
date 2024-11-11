@@ -1,5 +1,4 @@
 use crate::sequence::Sequence;
-use crate::structs::range::Range;
 
 pub struct Quadratic {
     pub a : f64,
@@ -20,14 +19,4 @@ impl Sequence<f64> for Quadratic {
         let xn = self.seq.k_th(k) as f64;
         self.a * xn.powf(k as f64) + self.b * xn + self.c
     }
-    fn range(&self, range: Range) -> Vec<f64> {
-        let mut result = Vec::new();
-        let mut k = range.from;
-        while k < range.to {
-            result.push(self.k_th(k as usize));
-            k += range.step;
-        }
-        result
-    }
-
 }

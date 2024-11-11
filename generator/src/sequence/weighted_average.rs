@@ -1,5 +1,4 @@
 use crate::sequence::Sequence;
-use crate::structs::range::Range;
 
 pub struct WeightedAverage {
     weight_seq: Box<dyn Sequence<i64>>,
@@ -20,14 +19,5 @@ impl Sequence<f64> for WeightedAverage {
         let bk = self.seq1.k_th(k);
         let wk = self.weight_seq.k_th(k);
         wk * ak + (1.0-wk) * bk       
-    }
-    fn range(&self, range: Range) -> Vec<f64> {
-        let mut result = Vec::new();
-        let mut k = range.from;
-        while k < range.to {
-            result.push(self.k_th(k as usize));
-            k += range.step;
-        }
-        result
     }
 }

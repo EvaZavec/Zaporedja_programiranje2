@@ -12,21 +12,13 @@ use tokio::net::TcpListener;
 
 const PORT: u16 = 12345;
 //spremeni v prebrano iz command lina, podobno za ip
-<<<<<<< HEAD
-use crate::sequence::Sequence;
-use crate::structs::project::Project;
-use crate::info::sequences;
-use crate::structs::sequence::SequenceRequest;
-use crate::sequence::arithmetic::Arithmetic;
-
-=======
 
 use crate::info::sequences;
 use crate::structs::sequence::SequenceRequest;
 use crate::functions::send_get_post::{send_get, send_post};
 use crate::functions::project_handler::get_project;
->>>>>>> 23d48fb5df05f7c1b9aeb651bcc640af8523f1d8
 
+pub mod errors;
 pub mod functions;
 pub mod info;
 pub mod sequence;

@@ -1,5 +1,4 @@
 use crate::sequence::Sequence;
-use crate::structs::range::Range;
 use rand::Rng;
 
 pub struct Random {
@@ -22,14 +21,4 @@ impl Sequence<f64> for Random {
         let b = f64::max(k1, k2);
         rng.gen_range(a..b)
     }
-    fn range(&self, range: Range) -> Vec<f64> {
-        let mut result = Vec::new();
-        let mut k = range.from;
-        while k < range.to {
-            result.push(self.k_th(k as usize));
-            k += range.step;
-        }
-        result
-    }
-    
 }
