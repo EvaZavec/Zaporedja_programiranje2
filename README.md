@@ -13,7 +13,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Chaos
 
-📚 **Description**: `chaos` sequence takes two parameters, the starting element and the parameter of chaos, and returns the next element according to the formula: $ c_(k) = r \cdot c_(k-1) \cdot (1 - c_(k-1))$. <br>⚙️ **Parameters**:   2  <br>🚀 **Sequences**:   0
+📚 **Description**: `chaos` sequence takes two parameters, the starting element and the parameter of chaos, and returns the next element according to the formula: $ c_(k) = r \cdot c_{k-1} \cdot (1 - c_{k-1}) $. <br>⚙️ **Parameters**:   2  <br>🚀 **Sequences**:   0
 
 
  ### Constant sequence
@@ -88,7 +88,7 @@ Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter
 
 ### Weighted average
 
-📚 **Description**: `weighted_average` is calculated by formula: $w_{k} a_{k} + (1-wk) b_{k}$, where $w_k$ is the weighted sequence and $a_k, b_k$ are two other sequences. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   3
+📚 **Description**: `weighted_average` is calculated by formula: $w_{k} a_{k} + (1-w_k) b_{k}$, where $w_k$ is the weighted sequence and $a_k, b_k$ are two other sequences. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   3
 
 
 
