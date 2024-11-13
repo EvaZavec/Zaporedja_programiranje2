@@ -4,12 +4,12 @@ pub struct LinearCombination {
     a: f64,
     b: f64,
     c: f64,
-    seq1: Box<dyn Sequence<f64>>,
-    seq2: Box<dyn Sequence<f64>>
+    seq1: Box<dyn Sequence<i64>>,
+    seq2: Box<dyn Sequence<i64>>
 }
 
 impl LinearCombination {
-    pub fn new( a: f64, b: f64, c: f64, seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<LinearCombination> {
+    pub fn new( a: f64, b: f64, c: f64, seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<LinearCombination> {
         Box::new(LinearCombination { a, b, c, seq1, seq2 })
     }
 }

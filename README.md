@@ -3,8 +3,8 @@
 TODO
 ## Namestitev in uporaba
 TODO
-## Razpoložljiva zaporedja
-Spodaj so našteta in opisana implementirana zaporedja s številom prametrov ter zaporedij potrebnih za njihovo tvorbo:
+## Available Sequences
+Below are listed and described the implemented sequences, including the number of parameters and the sequences required for their formation:
 
 ### Arithmetic sequence
 

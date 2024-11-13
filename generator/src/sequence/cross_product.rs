@@ -1,12 +1,12 @@
 use crate::sequence::Sequence;
 
 pub struct CrossProduct {
-    seq1: Box<dyn Sequence<f64>>,
-    seq2: Box<dyn Sequence<f64>>
+    seq1: Box<dyn Sequence<i64>>,
+    seq2: Box<dyn Sequence<i64>>
 }
 
 impl CrossProduct {
-    pub fn new(seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<CrossProduct> {
+    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<CrossProduct> {
         Box::new(CrossProduct { seq1, seq2 })
     }
 }
