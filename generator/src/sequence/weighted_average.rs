@@ -1,14 +1,14 @@
 use crate::sequence::Sequence;
 
 pub struct WeightedAverage {
-    weight_seq: Box<dyn Sequence<i64>>,
-    seq1: Box<dyn Sequence<i64>>,
-    seq2: Box<dyn Sequence<i64>>
+    weight_seq: Box<dyn Sequence<f64>>,
+    seq1: Box<dyn Sequence<f64>>,
+    seq2: Box<dyn Sequence<f64>>
     
 }
 
 impl WeightedAverage {
-    pub fn new(weight_seq: Box<dyn Sequence<i64>>, seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<WeightedAverage> {
+    pub fn new(weight_seq: Box<dyn Sequence<f64>>, seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<WeightedAverage> {
         Box::new(WeightedAverage { weight_seq, seq1, seq2 })
     }
 }

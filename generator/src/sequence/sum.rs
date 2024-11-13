@@ -1,12 +1,12 @@
 use crate::sequence::Sequence;
 
 pub struct Sum {
-    seq1: Box<dyn Sequence<i64>>,
-    seq2: Box<dyn Sequence<i64>>
+    seq1: Box<dyn Sequence<f64>>,
+    seq2: Box<dyn Sequence<f64>>
 }
 
 impl Sum {
-    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<Sum> {
+    pub fn new(seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<Sum> {
         Box::new(Sum { seq1, seq2 })
     }
 }

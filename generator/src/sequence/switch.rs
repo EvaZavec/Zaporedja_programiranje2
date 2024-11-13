@@ -5,12 +5,12 @@ pub struct Switch {
     pub limit_up : f64,
     pub limit_down : f64,
     pub switch_index : f64,
-    pub seq1: Box<dyn Sequence<i64>>,
-    pub seq2: Box<dyn Sequence<i64>>,
+    pub seq1: Box<dyn Sequence<f64>>,
+    pub seq2: Box<dyn Sequence<f64>>,
 }
 
 impl Switch {
-    pub fn new(limit_up : f64, limit_down : f64, switch_index : f64, seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<Switch> {
+    pub fn new(limit_up : f64, limit_down : f64, switch_index : f64, seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<Switch> {
         Box::new(Switch { limit_up, limit_down, switch_index, seq1, seq2 })
     }
 }

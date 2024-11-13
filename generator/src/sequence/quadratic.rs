@@ -4,11 +4,11 @@ pub struct Quadratic {
     pub a : f64,
     pub b : f64,
     pub c : f64,
-    pub seq: Box<dyn Sequence<i64>>,
+    pub seq: Box<dyn Sequence<f64>>,
 }
 
 impl Quadratic {
-    pub fn new(a : f64, b : f64, c : f64, seq: Box<dyn Sequence<i64>>,) -> Box<Quadratic> {
+    pub fn new(a : f64, b : f64, c : f64, seq: Box<dyn Sequence<f64>>,) -> Box<Quadratic> {
         Box::new(Quadratic { a, b, c, seq })
     }
     

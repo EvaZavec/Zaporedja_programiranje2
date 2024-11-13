@@ -1,12 +1,12 @@
 use crate::sequence::Sequence;
 
 pub struct Product {
-    pub seq1: Box<dyn Sequence<i64>>,
-    pub seq2: Box<dyn Sequence<i64>>
+    pub seq1: Box<dyn Sequence<f64>>,
+    pub seq2: Box<dyn Sequence<f64>>
 }
 
 impl Product {
-    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<Product> {
+    pub fn new(seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<Product> {
         Box::new(Product { seq1, seq2 })
     }
 }

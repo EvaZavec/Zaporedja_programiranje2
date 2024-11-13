@@ -15,6 +15,7 @@ use crate::sequence::random::Random;
 use crate::sequence::sum::Sum;
 use crate::sequence::switch::Switch;
 use crate::sequence::weighted_average::WeightedAverage;
+use crate::structs::sequence::SequenceSyntax;
 
 use bytes::Bytes;
 use hyper::{body::Incoming, Method, Request, Response};
@@ -77,7 +78,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = CrossProduct::new(request.parameters[0], request.parameters[1]);
+                    let seq = CrossProduct::new(seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -87,7 +88,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Drop::new(request.sequences[0], request.parameters[0]);
+                    let seq = Drop::new(seq_from_syntax(&*request.sequences[0]), request.parameters[0]);
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -97,7 +98,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Fibonacci::new(request.sequences[0], request.sequences[1]);
+                    let seq = Fibonacci::new(seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]), seq_from_syntax(&*request.sequences[2]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -117,7 +118,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = LinearCombination::new(request.parameters[0], request.parameters[1], request.parameters[2], request.sequences[0], request.sequences[1]);
+                    let seq = LinearCombination::new(request.parameters[0], request.parameters[1], request.parameters[2], seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -127,7 +128,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Maximum::new(request.sequences[0], request.sequences[1]);
+                    let seq = Maximum::new(seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -138,7 +139,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = PartialProduct::new(request.sequences[0]);
+                    let seq = PartialProduct::new(seq_from_syntax(&*request.sequences[0]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -149,7 +150,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Product::new(request.sequences[0], request.sequences[1]);
+                    let seq = Product::new(seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -160,7 +161,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Quadratic::new(request.parameters[0], request.parameters[1], request.parameters[2], request.sequences[0]);
+                    let seq = Quadratic::new(request.parameters[0], request.parameters[1], request.parameters[2], seq_from_syntax(&*request.sequences[0]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -170,7 +171,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Random::new(request.sequences[0], request.sequences[1]);
+                    let seq = Random::new(seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -181,7 +182,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Sum::new(request.sequences[0], request.sequences[1]);
+                    let seq = Sum::new(seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -192,7 +193,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = Switch::new(request.parameters[0], request.parameters[1], request.parameters[2], request.sequences[0], request.sequences[1]);
+                    let seq = Switch::new(request.parameters[0], request.parameters[1], request.parameters[2], seq_from_syntax(&*request.sequences[0]), seq_from_syntax(&*request.sequences[1]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -203,7 +204,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
                     let body = collect_body(req).await?;
                     let request: SequenceRequest = serde_json::from_str(&body).unwrap();
                     let range = request.range;
-                    let seq = WeightedAverage::new(request.sequences[0], request.sequences[1], request.sequences[2]);
+                    let seq = WeightedAverage::new(seq_from_syntax(&*(request.sequences[0])), seq_from_syntax(&*request.sequences[1]), seq_from_syntax(&*request.sequences[2]));
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))
@@ -216,3 +217,43 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
     }
 }
 
+
+pub fn seq_from_syntax(syntax: &SequenceSyntax) -> Box<dyn Sequence<f64>> {
+    match syntax.name.as_str() {
+        "Arithmetic" => Arithmetic::new(syntax.parameters[0],syntax.parameters[1]),
+        "Chaos" => Chaos::new(syntax.parameters[0],syntax.parameters[1]),
+        "Constant" => Constant::new(syntax.parameters[0]),
+        "CrossProduct" => CrossProduct::new(seq_from_syntax(&*syntax.sequences[0]),seq_from_syntax(&*syntax.sequences[1])),
+        "Drop" => Drop::new(seq_from_syntax(&*syntax.sequences[0]),syntax.parameters[0]),
+        "Fibonacci" => Fibonacci::new(seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1]), 
+            seq_from_syntax(&*syntax.sequences[2])),
+        "Geometric" => Geometric::new(syntax.parameters[0],syntax.parameters[1]),
+        "LinComb" => LinearCombination::new(syntax.parameters[0],syntax.parameters[1],syntax.parameters[2],
+            seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1])),
+        "Maximum" => Maximum::new(seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1])),
+        "PartialProduct" => PartialProduct::new(seq_from_syntax(&*syntax.sequences[0])),
+        "Product" => Product::new(seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1])),
+        "Quadratic" => Quadratic::new(syntax.parameters[0],syntax.parameters[1],syntax.parameters[2],
+            seq_from_syntax(&*syntax.sequences[0])),
+        "Random" => Random::new(seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1])),
+        "Sum" => Sum::new(seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1])),
+        "Switch" => Switch::new(syntax.parameters[0],syntax.parameters[1],syntax.parameters[2],
+            seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1])),
+        "WeightedAverage" => WeightedAverage::new(seq_from_syntax(&*syntax.sequences[0]),
+            seq_from_syntax(&*syntax.sequences[1]),
+            seq_from_syntax(&*syntax.sequences[2])),
+        _ => panic!("Sequence does not exist: {}", syntax.name),
+        
+        
+
+
+    }
+
+}

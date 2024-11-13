@@ -2,12 +2,12 @@ use crate::sequence::Sequence;
 use rand::Rng;
 
 pub struct Random {
-    pub seq1: Box<dyn Sequence<i64>>,
-    pub seq2: Box<dyn Sequence<i64>>,
+    pub seq1: Box<dyn Sequence<f64>>,
+    pub seq2: Box<dyn Sequence<f64>>,
 }
 
 impl Random {
-    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<Random> {
+    pub fn new(seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<Random> {
         Box::new(Random { seq1, seq2 })
     }
 }

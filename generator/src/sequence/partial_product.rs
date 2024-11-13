@@ -1,16 +1,16 @@
 use crate::sequence::Sequence;
 
 pub struct PartialProduct {
-    pub seq: Box<dyn Sequence<i64>>,
+    pub seq: Box<dyn Sequence<f64>>,
 }
 
 impl PartialProduct {
-    pub fn new(seq: Box<dyn Sequence<i64>>) -> Box<PartialProduct> {
+    pub fn new(seq: Box<dyn Sequence<f64>>) -> Box<PartialProduct> {
         Box::new(PartialProduct { seq })
     }
 }
 
-impl Sequence<i64> for PartialProduct {
+impl Sequence<f64> for PartialProduct {
     fn k_th(&self, k: usize) -> f64 {
         let mut product = 1.0;
         for i in 0..=k {

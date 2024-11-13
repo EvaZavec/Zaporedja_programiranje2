@@ -1,12 +1,12 @@
 use crate::sequence::Sequence;
 
 pub struct Drop {
-    pub seq: Box<dyn Sequence<i64>>,
+    pub seq: Box<dyn Sequence<f64>>,
     pub delay: f64
 }
 
 impl Drop {
-    pub fn new(seq: Box<dyn Sequence<i64>>, delay: f64) -> Box<Drop> {
+    pub fn new(seq: Box<dyn Sequence<f64>>, delay: f64) -> Box<Drop> {
         Box::new(Drop { seq, delay })
     }
 }
