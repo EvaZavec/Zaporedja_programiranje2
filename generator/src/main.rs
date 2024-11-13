@@ -1,6 +1,6 @@
 use std::net::SocketAddr;
 
-use functions::http_handler;
+use functions::handle_request;
 use hyper::server::conn::http1;
 use hyper::service::service_fn;
 use hyper_util::rt::TokioIo;
@@ -44,7 +44,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         let io = TokioIo::new(stream);
 
         let service = service_fn(move |req| {
-            http_handler::handle_request(req)
+            handle_request::handle_request(req)
         });
 
         if let Err(err) = http1::Builder::new().serve_connection(io, service).await {
