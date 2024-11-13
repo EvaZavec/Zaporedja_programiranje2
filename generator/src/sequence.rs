@@ -19,11 +19,11 @@ use crate::structs::range::Range;
 pub trait Sequence<I64> {
     fn k_th(&self, k: usize) -> f64;
 
-    fn range(&self, range: Range) -> Vec<f64> {
+    fn range(&self, range: Range) -> Vec<i64> {
         let mut result = Vec::new();
         let mut k = range.from;
         while k < range.to {
-            result.push(self.k_th(k as usize));
+            result.push(self.k_th(k as usize) as i64);
             k += range.step;
         }
         result

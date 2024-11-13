@@ -22,7 +22,7 @@ pub fn sequences() -> Vec<SequenceInfo> {
         sequences: 0,
     });
     sequences.push(SequenceInfo {
-        name: "Cross product".to_string(),
+        name: "CrossProduct".to_string(),
         description: "Cross product sequence takes two sequences ak and bk 
         and returns the next element as the cross product of ak * bk+1 + ak+1 * bk.".to_string(),
         parameters: 0,
@@ -48,7 +48,7 @@ pub fn sequences() -> Vec<SequenceInfo> {
         sequences: 0,
     });
     sequences.push(SequenceInfo {
-        name: "Lin Comb".to_string(),
+        name: "LinComb".to_string(),
         description: "Linear combination calculated by the formula: a * an + b * bn + c, 
         where a, b, c are parameters and an, bn are sequences".to_string(),
         parameters: 3,
@@ -61,7 +61,7 @@ pub fn sequences() -> Vec<SequenceInfo> {
         sequences: 2,
     });
     sequences.push(SequenceInfo {
-        name: "Partial product".to_string(),
+        name: "PartialProduct".to_string(),
         description: "Partial product sequence returns products of all previous element of the given sequence.".to_string(),
         parameters: 0,
         sequences: 1,
@@ -100,8 +100,8 @@ pub fn sequences() -> Vec<SequenceInfo> {
         sequences: 2,
     });
     sequences.push(SequenceInfo {
-        name: "Weighted average".to_string(),
-        description: "weighted avarage is calculated by formula: wk * ak + (1-wk) * bk, where wk is the weighted sequence
+        name: "WeightedAverage".to_string(),
+        description: "Weighted avarage is calculated by formula: wk * ak + (1-wk) * bk, where wk is the weighted sequence
         and ak, bk are two other sequences.".to_string(),
         parameters: 0,
         sequences: 3,

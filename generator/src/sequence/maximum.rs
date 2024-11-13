@@ -1,12 +1,12 @@
 use crate::sequence::Sequence;
 
 pub struct Maximum {
-    seq1: Box<dyn Sequence<f64>>,
-    seq2: Box<dyn Sequence<f64>> 
+    seq1: Box<dyn Sequence<i64>>,
+    seq2: Box<dyn Sequence<i64>> 
 }
 
 impl Maximum {
-    pub fn new(seq1: Box<dyn Sequence<f64>>, seq2: Box<dyn Sequence<f64>>) -> Box<Maximum> {
+    pub fn new(seq1: Box<dyn Sequence<i64>>, seq2: Box<dyn Sequence<i64>>) -> Box<Maximum> {
         Box::new(Maximum { seq1, seq2 })
     }
 }
