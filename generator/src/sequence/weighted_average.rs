@@ -16,7 +16,7 @@ impl WeightedAverage {
 impl Sequence<f64> for WeightedAverage {
     fn k_th(&self, k: usize) -> f64 {
         let ak = self.seq1.k_th(k);
-        let bk = self.seq1.k_th(k);
+        let bk = self.seq2.k_th(k);
         let wk = self.weight_seq.k_th(k);
         wk * ak + (1.0-wk) * bk       
     }

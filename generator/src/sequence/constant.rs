@@ -11,7 +11,7 @@ impl Constant {
 }
 
 impl Sequence<f64> for Constant {
-    fn k_th(&self, k: usize) -> f64 {
+    fn k_th(&self, _k: usize) -> f64 {
         self.constant
     }
 }
