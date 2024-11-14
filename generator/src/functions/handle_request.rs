@@ -3,6 +3,7 @@ use crate::structs::sequence::{SequenceRequest, SequenceSyntax};
 use crate::functions::project_handler::get_project;
 use crate::functions::http_handler::{full, collect_body, create_404};
 use crate::functions::seq_from_syntax::seq_from_syntax;
+use crate::errors::CustomError;
 
 use bytes::Bytes;
 use hyper::{body::Incoming, Method, Request, Response};
