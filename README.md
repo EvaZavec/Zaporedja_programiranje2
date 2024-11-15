@@ -9,6 +9,8 @@ Use the command below to start the generator:
 ```bash
 cargo run -- <REGISTRY_IP> <GENERATOR_IP> <PORT> TODO
 ```
+When the generator starts, it automatically registers itself with the central registry using the specified IP and port. To handle composition requests, it can efficiently fetch sub-sequences from other registered generators.
+
 ## Available Sequences
 Below are listed and described the implemented sequences, including the number of parameters and the sequences required for their formation:
 
