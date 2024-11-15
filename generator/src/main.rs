@@ -1,3 +1,4 @@
+use std::env;
 use std::net::SocketAddr;
 
 use functions::handle_request;
@@ -6,9 +7,10 @@ use hyper::service::service_fn;
 use hyper_util::rt::TokioIo;
 use tokio::net::TcpListener;
 
-const PORT: u16 = 12345;
-//spremeni v prebrano iz command lina, podobno za ip
+const DEFAULT_IP: &str = "0.0.0.0";
+const DEFAULT_PORT: u16 = 9000;
 
+use crate::errors::CustomError;
 use crate::functions::send_get_post::{send_get, send_post};
 use crate::functions::project_handler::get_project;
 
@@ -20,21 +22,37 @@ pub mod structs;
 
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let addr: SocketAddr = ([0, 0, 0, 0], PORT).into();
+async fn main() -> Result<(), CustomError> {
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        return Err(CustomError::InvalidInputFormat(
+            "Write: cargo run -- IP_REGISTRA [IP_GENERATORJA PORT]".to_string(),
+        ));
+    }
+    
+    let register_url = args[1].clone();
+    let generator_ip = args.get(2).unwrap_or(&DEFAULT_IP.to_string()).clone();
+    let generator_port = args
+        .get(3)
+        .and_then(|p| p.parse().ok())
+        .unwrap_or(DEFAULT_PORT);
 
-    let b = send_get("http://0.0.0.0:7878/project".to_string()).await?;
-    println!("HERE {}", b);
+    let addr: SocketAddr = (generator_ip.parse::<std::net::IpAddr>().map_err(|_| {
+        CustomError::InvalidInputFormat(format!("Invalid IP address: {}", generator_ip))
+    })?, generator_port).into();
 
-    let b = send_post(
-        "http://0.0.0.0:7878/project".to_string(),
-        serde_json::to_string(&get_project()).unwrap(),
-    )
-    .await?;
-    println!("HERE {}", b);
+    let project = get_project(generator_ip.clone(), generator_port);
 
-    let b = send_get("http://0.0.0.0:7878".to_string()).await?;
-    println!("HERE {}", b);
+    println!("Checking register status at {}", register_url);
+    if let Err(err) = send_get(&register_url).await {
+        return Err(CustomError::UnknownError("Register not available".to_string()));
+    }
+
+    println!("Registering generator: {:?}", project);
+    send_post(&register_url, serde_json::to_string(&project).map_err(|_| {
+        CustomError::InvalidInputFormat("Failed to serialize project".to_string())
+    })?).await?;
+    
 
     let listener = TcpListener::bind(addr).await?;
     println!("Listening on http://{}", addr);

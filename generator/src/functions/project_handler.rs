@@ -1,11 +1,11 @@
 use crate::structs::project::Project;
 use reqwest::Error;
 
-pub fn get_project() -> Project {
+pub fn get_project(ip: String, port: u16) -> Project {
     Project {
         name: "Eva & Leila".to_string(),
-        ip: "0.0.0.0".to_string(),
-        port: 12345,
+        ip,
+        port,
     }
 }
 
