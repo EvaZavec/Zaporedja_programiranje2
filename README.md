@@ -1,6 +1,6 @@
 # Sequences - Project Assignment for the Course Programming 2
 
-This project implements a sequence generator for floating-point numbers `(f64)` indexed by natural numbers `(u64)`. The generator operates as an HTTP server, capable of producing sequences, processing requests for sequence compositions, and interacting with other generators registered in the central registry.
+This project implements a sequence generator for floating-point numbers `(f64)` indexed by natural numbers `(u64)`. The generator operates as an `HTTP` server, capable of producing sequences, processing requests for sequence compositions, and interacting with other generators registered in the central registry.
 
 ## Installation and Usage
 
