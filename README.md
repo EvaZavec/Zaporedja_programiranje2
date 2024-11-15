@@ -1,8 +1,14 @@
-# Zaporedja - Projektna naloga pri premetu Programiranje 2
+# Sequences - Project Assignment for the Course Programming 2
 
-TODO
-## Namestitev in uporaba
-TODO
+This project implements a sequence generator for floating-point numbers `(f64)` indexed by natural numbers `(u64)`. The generator operates as an HTTP server, capable of producing sequences, processing requests for sequence compositions, and interacting with other generators registered in the central registry.
+
+## Installation and Usage
+
+Use the command below to start the generator:
+
+```bash
+cargo run -- <REGISTRY_IP> <GENERATOR_IP> <PORT> TODO
+
 ## Available Sequences
 Below are listed and described the implemented sequences, including the number of parameters and the sequences required for their formation:
 
