@@ -14,6 +14,7 @@ pub mod switch;
 pub mod weighted_average;
 pub mod maximum;
 pub mod lin_comb;
+pub mod from_elements;
 use crate::structs::range::Range;
 
 pub trait Sequence<T> {

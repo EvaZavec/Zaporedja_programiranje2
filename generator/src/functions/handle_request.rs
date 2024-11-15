@@ -40,7 +40,7 @@ pub async fn handle_request(req: Request<Incoming>) -> Result<Response<BoxBody<B
             match sequence {
                 Some(sequence_syntax) => {
                     let syntax = to_syntax(&sequence_syntax.name, wanted_parameters, wanted_sequences);
-                    let seq = seq_from_syntax(&syntax);
+                    let seq = seq_from_syntax(&syntax, &range).await;
                     Ok(Response::new(full(
                         serde_json::to_string(&seq.range(range)).unwrap(),
                     )))

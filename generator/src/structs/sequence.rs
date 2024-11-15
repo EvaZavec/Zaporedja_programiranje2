@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use crate::structs::range::Range;
 
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct SequenceSyntax {
     pub name: String,
     pub parameters: Vec<f64>,
