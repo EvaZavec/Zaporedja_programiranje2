@@ -1,5 +1,5 @@
 use bytes::Bytes;
-use hyper::{body::Incoming, body::Body, Request, Response, StatusCode};
+use hyper::{body::Body, body::Incoming, Request, Response, StatusCode};
 use http_body_util::{combinators::BoxBody, BodyExt, Empty, Full};
 
 pub fn full<T: Into<Bytes>>(chunk: T) -> BoxBody<Bytes, hyper::Error> {
@@ -35,4 +35,13 @@ pub fn create_200<T: Into<Bytes>>(body: T) -> Result<Response<BoxBody<Bytes, hyp
     let mut ok = Response::new(full(body));
     *ok.status_mut() = StatusCode::OK;
     Ok(ok)
+}
+
+pub fn create_error_response<T: Into<Bytes>>(
+    status: StatusCode,
+    body: T,
+) -> Result<Response<dyn Body>, hyper::Error> {
+    let mut response = Response::new(Body::from(body.into()));
+    *response.status_mut() = status;
+    Ok(response)
 }

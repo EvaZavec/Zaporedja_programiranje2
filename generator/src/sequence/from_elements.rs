@@ -13,7 +13,7 @@ impl FromElements {
 
 impl Sequence<f64> for FromElements {
     fn k_th(&self, k: usize) -> f64 {
-        if (k>=self.elems.len()) {
+        if k>=self.elems.len() {
             return self.elems[0]
         }
         return self.elems[k]
