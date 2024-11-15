@@ -116,6 +116,12 @@ pub async fn pull_sequence(register_url: &str, name: &String, seq_request: Seque
 
 
     }
+    else {
+        return create_error_response(
+            CustomError::InvalidSequenceName(name.clone()),
+            StatusCode::NOT_FOUND,
+        );
+    }
 
     Ok(int_elems)
 
