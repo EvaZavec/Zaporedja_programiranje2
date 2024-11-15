@@ -8,7 +8,7 @@ Use the command below to start the generator:
 
 ```bash
 cargo run -- <REGISTRY_IP> <GENERATOR_IP> <PORT> TODO
-
+```
 ## Available Sequences
 Below are listed and described the implemented sequences, including the number of parameters and the sequences required for their formation:
 
