@@ -9,10 +9,15 @@ Use the command below to start the generator:
 ```bash
 cargo run -- <REGISTRY_IP> <GENERATOR_IP> <PORT> TODO
 ```
-When the generator starts, it automatically registers itself with the central registry using the specified IP and port. To handle composition requests, it can efficiently fetch sub-sequences from other registered generators.
+When the generator starts, it automatically registers itself with the central registry using the specified IP and port. When they are not given, the default values '`0.0.0.0` and `9000` are used. 
+
+The generator can answer the following `GET` and `POST` requests:
+- `GET /ping/`: It returns information about the generator, that were given in registration.
+- `GET /sequence/`: It provides information about sequences available on this generator.
+- `POST /sequence/<seq-name>/`: It returns the elements of `<seq-name>`with given arguments and within given range. If sequence uses other sequences, they can be requested from other available generators.
 
 ## Available Sequences
-Below are listed and described the implemented sequences, including the number of parameters and the sequences required for their formation:
+Below are listed and described the implemented sequences, including the number of parameters and sequences required for their formation:
 
 ### Arithmetic sequence
 
@@ -99,7 +104,8 @@ Below are listed and described the implemented sequences, including the number o
 📚 **Description**: `weighted_average` is calculated by formula: $w_{k} a_{k} + (1-w_k) b_{k}$, where $w_k$ is the weighted sequence and $a_k, b_k$ are two other sequences. <br>⚙️ **Parameters**:   0  <br>🚀 **Sequences**:   3
 
 
-
+## Authors
+Leila Mokrovič in Eva Zavec
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
