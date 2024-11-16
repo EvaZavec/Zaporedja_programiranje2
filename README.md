@@ -9,7 +9,7 @@ Use the command below to start the generator:
 ```bash
 cargo run -- <REGISTRY_IP> <GENERATOR_IP> <PORT> TODO
 ```
-When the generator starts, it automatically registers itself with the central registry using the specified IP and port. When they are not given, the default values '`0.0.0.0` and `9000` are used. 
+When the generator starts, it automatically registers itself with the central registry using the specified IP and port. When they are not given, the default values `0.0.0.0` and `9000` are used. 
 
 The generator can answer the following `GET` and `POST` requests:
 - `GET /ping/`: It returns information about the generator, that were given in registration.
