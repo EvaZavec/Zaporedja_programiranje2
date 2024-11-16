@@ -25,7 +25,7 @@ pub async fn check_available_sequences(
             CustomError::UnknownError(format!("Failed to fetch generators: {}", e)),
             StatusCode::INTERNAL_SERVER_ERROR,
         )
-    })?;;
+    })?;
     let client = Client::new();
     let mut available_generators = HashMap::new();
 
