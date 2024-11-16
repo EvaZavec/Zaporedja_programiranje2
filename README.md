@@ -7,7 +7,7 @@ This project implements a sequence generator for floating-point numbers `(f64)` 
 Use the command below to start the generator:
 
 ```bash
-cargo run -- <REGISTRY_IP> <GENERATOR_IP> <PORT> TODO
+cargo run -- <REGISTRY_IP> <GENERATOR_IP> <PORT> 
 ```
 When the generator starts, it automatically registers itself with the central registry using the specified IP and port. When they are not given, the default values `0.0.0.0` and `9000` are used. 
 
